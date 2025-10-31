@@ -1,8 +1,8 @@
 // src/styles/variables.scss
 
 // Цвета фона
-$background-page: #0f0c14;          // Основной фон страницы
-$background-block: #1a1520;         // Фон карточек и блоков
+$background-page: #141414;          // Основной фон страницы
+$background-block: #1E1E1E;         // Фон карточек и блоков
 $background-header: #1a1520;        // Фон хедера
 $background-hover: #2d2834;         // Фон при наведении
 
@@ -16,9 +16,10 @@ $gradient-debit-card: linear-gradient(45deg, #ffeb3b, #ffc107);
 $gradient-savings-card: linear-gradient(45deg, #2196f3, #64b5f6);
 
 // Кнопки и интерактив
-$button-bg: #2d2834;
+$button-bg: #141414;
 $button-bg-hover: #443e50;
 $button-color: #ffffff;
+$button-border-color: #525252;
 
 // Статистика (круг)
 $stat-circle-gradient: linear-gradient(45deg, #ff9800, #ffeb3b);

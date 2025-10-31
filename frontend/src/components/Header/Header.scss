@@ -3,20 +3,25 @@
 @import '../../styles/variables.scss';
 
 .header {
-  background: $background-header;
-  padding: 15px 20px;
+  background: none;
+  padding: 10px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $border-color;
+  border-bottom: none;
+  position: relative;
 
-  h1 {
+  .header-left h1 {
     font-size: $font-size-h1;
     font-weight: bold;
     color: $color-text-primary;
+    margin: 0;
   }
 
-  nav {
+  .header-nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 20px;
 
@@ -26,10 +31,18 @@
       font-weight: 500;
       padding: 8px 12px;
       border-radius: 4px;
-      transition: background 0.2s;
+      transition: all 0.2s ease;
 
+      // Активный пункт (автоматически от NavLink)
+      &.active {
+        background: $background-block;
+        border-radius: 10px;
+      }
+
+      // Ховер: градиент снизу вверх + больший радиус
       &:hover {
-        background: $background-hover;
+        background: linear-gradient(to top, $background-block, rgba(0, 0, 0, 0));
+        border-radius: 15px;
       }
     }
   }

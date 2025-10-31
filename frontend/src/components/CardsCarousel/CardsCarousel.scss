@@ -16,6 +16,9 @@
     overflow: hidden;
     box-shadow: $box-shadow;
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    background: $gradient-main-card;
 
     &:hover {
       transform: translateY(-2px);
@@ -31,6 +34,13 @@
 
     &.blue {
       background: $gradient-savings-card;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-grow: 1;
     }
 
     .balance {
@@ -50,11 +60,23 @@
       margin-top: 10px;
     }
 
-    .icon {
+    .transfer-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
+      bottom: -1px;
+      right: 1px;
+      background-color: $button-bg;
+      color: $button-color;
+      border: 2px solid $button-border-color;
+      border-radius: 10px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100px;
+      height: 40px;
+
+      &:hover {
+      }
     }
   }
 }

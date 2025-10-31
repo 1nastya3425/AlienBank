@@ -4,20 +4,27 @@
 
 .greeting {
   margin-bottom: 20px;
-  padding: 20px;
-  background: $background-block;
-  border-radius: $border-radius-default;
+  padding: 20px 20px 20px 0;
+  background: none;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-direction: row;
+  gap: 15px;
+
+  .greeting-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
   h2 {
     font-size: $font-size-h2;
-    margin-bottom: 5px;
+    margin-bottom: 2px; 
   }
 
   p {
     color: $color-text-secondary;
     font-size: $font-size-small;
+    margin: 0; 
   }
 }
