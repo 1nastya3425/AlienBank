@@ -1,0 +1,60 @@
+// src/components/CardsCarousel/CardsCarousel.scss
+
+@import '../../styles/variables.scss';
+
+.cards-carousel {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+
+  .card {
+    min-width: 250px;
+    padding: 15px;
+    border-radius: $border-radius-card;
+    position: relative;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.green {
+      background: $gradient-main-card;
+    }
+
+    &.yellow {
+      background: $gradient-debit-card;
+    }
+
+    &.blue {
+      background: $gradient-savings-card;
+    }
+
+    .balance {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .type {
+      font-size: $font-size-small;
+      opacity: 0.8;
+    }
+
+    .card-number {
+      font-size: $font-size-tiny;
+      opacity: 0.6;
+      margin-top: 10px;
+    }
+
+    .icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+    }
+  }
+}

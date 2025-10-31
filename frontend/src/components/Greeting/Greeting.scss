@@ -1,0 +1,23 @@
+// src/components/Greeting/Greeting.scss
+
+@import '../../styles/variables.scss';
+
+.greeting {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: $background-block;
+  border-radius: $border-radius-default;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  h2 {
+    font-size: $font-size-h2;
+    margin-bottom: 5px;
+  }
+
+  p {
+    color: $color-text-secondary;
+    font-size: $font-size-small;
+  }
+}

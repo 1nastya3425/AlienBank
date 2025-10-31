@@ -1,42 +1,107 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+// src/index.scss (или App.scss)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  font-family: Arial, sans-serif;
+  background: #121212;
+  color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.header {
+  background: #1e1e1e;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+.header nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.greeting {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 8px;
+}
+
+.cards-carousel {
+  margin-bottom: 20px;
+}
+
+.card-list {
+  display: flex;
+  gap: 15px;
 }
 
 .card {
-  padding: 2em;
+  background: linear-gradient(45deg, #4caf50, #8bc34a);
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 200px;
 }
 
-.read-the-docs {
-  color: #888;
+.recent-operations,
+.stats-overview,
+.transaction-list {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.stat-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff9800, #ffeb3b);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.stat-circle span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navigation-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.transaction-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-list th,
+.transaction-list td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.transaction-list th {
+  background: #333;
 }

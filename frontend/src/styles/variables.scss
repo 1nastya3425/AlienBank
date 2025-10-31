@@ -1,0 +1,42 @@
+// src/styles/variables.scss
+
+// Цвета фона
+$background-page: #0f0c14;          // Основной фон страницы
+$background-block: #1a1520;         // Фон карточек и блоков
+$background-header: #1a1520;        // Фон хедера
+$background-hover: #2d2834;         // Фон при наведении
+
+// Текст
+$color-text-primary: #ffffff;       // Основной текст
+$color-text-secondary: #9e9ea7;     // Второстепенный текст (описания, даты)
+
+// Градиенты для карт
+$gradient-main-card: linear-gradient(45deg, #4caf50, #8bc34a);
+$gradient-debit-card: linear-gradient(45deg, #ffeb3b, #ffc107);
+$gradient-savings-card: linear-gradient(45deg, #2196f3, #64b5f6);
+
+// Кнопки и интерактив
+$button-bg: #2d2834;
+$button-bg-hover: #443e50;
+$button-color: #ffffff;
+
+// Статистика (круг)
+$stat-circle-gradient: linear-gradient(45deg, #ff9800, #ffeb3b);
+
+// Границы и тени
+$border-color: #2d2834;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+// Размеры
+$border-radius-default: 8px;
+$border-radius-card: 12px;
+$border-radius-button: 50%;
+
+// Шрифты
+$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-size-h1: 24px;
+$font-size-h2: 20px;
+$font-size-h3: 18px;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-tiny: 12px;

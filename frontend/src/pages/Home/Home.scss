@@ -1,0 +1,16 @@
+// src/pages/Home/Home.scss
+
+@import '../../styles/variables.scss';
+
+.home-page {
+  .container {
+    // Можно добавить специфичные стили для главной страницы
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+}

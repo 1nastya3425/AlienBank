@@ -1,0 +1,66 @@
+// src/components/StatsOverview/StatsOverview.scss
+
+@import '../../styles/variables.scss';
+
+.stats-overview {
+  background: $background-block;
+  padding: 20px;
+  border-radius: $border-radius-default;
+  box-shadow: $box-shadow;
+
+  h3 {
+    margin-bottom: 15px;
+    font-size: $font-size-h3;
+    color: $color-text-primary;
+  }
+
+  .stat-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: $stat-circle-gradient;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    position: relative;
+
+    span {
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    p {
+      font-size: $font-size-small;
+      z-index: 2;
+    }
+  }
+
+  .navigation-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+
+    .arrow-button {
+      background: $button-bg;
+      border: none;
+      color: $button-color;
+      width: 30px;
+      height: 30px;
+      border-radius: $border-radius-button;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: background 0.2s;
+
+      &:hover {
+        background: $button-bg-hover;
+      }
+    }
+  }
+}
