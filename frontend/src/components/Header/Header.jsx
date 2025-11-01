@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const Header = () => {
   return (

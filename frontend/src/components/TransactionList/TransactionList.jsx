@@ -1,29 +1,45 @@
 // src/components/TransactionList/TransactionList.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './TransactionList.scss';
 
-const TransactionList = () => {
-  const transactions = [
-    { id: 1, date: '09.06.2025 04:45', status: 'Сбербанк', desc: 'Яндекс', amount: '-199 ₽' },
-    { id: 2, date: '09.06.2025 04:45', status: 'T-Банк', desc: 'Иван Иванович И.', amount: '+1 105 ₽' },
-    { id: 3, date: '09.06.2025 04:45', status: 'Сбербанк', desc: 'Стипендия', amount: '+16 889 ₽' },
-  ];
+const TransactionList = ({ transactions }) => {
+  const navigate = useNavigate();
+  const firstThree = transactions.slice(0, 3);
 
   return (
     <div className="transaction-list">
       <h3>Список транзакций</h3>
-      <table>
-        <tbody>
-          {transactions.map(tx => (
-            <tr key={tx.id}>
-              <td>{tx.date}</td>
-              <td>{tx.status}</td>
-              <td>{tx.desc}</td>
-              <td>{tx.amount}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="transaction-table-wrapper">
+        <table>
+          <tbody>
+            {firstThree.map(tx => (
+              <tr key={tx.id}>
+                <td><div className="desc">{tx.date}</div></td>
+                <td><div className="desc">{tx.status}</div></td>
+                <td>
+                  <div className="transaction-desc">
+                    <div className="desc">{tx.desc}</div>
+                    <div className="details">{tx.details}</div>
+                  </div>
+                </td>
+                <td><div className="desc">{tx.amount}</div></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {transactions.length > 3 && (
+        <div className="toggle-button-wrapper">
+          <button
+            className="toggle-button"
+            onClick={() => navigate('/transactions', { state: { transactions } })}
+          >
+            Развернуть
+          </button>
+        </div>
+      )}
     </div>
   );
 };

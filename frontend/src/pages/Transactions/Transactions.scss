@@ -1,0 +1,64 @@
+// src/pages/Transactions/Transactions.scss
+
+@import '../../styles/variables.scss';
+
+.transactions-page {
+  background: $background-block;
+  padding: 20px;
+  border-radius: $border-radius-default;
+  box-shadow: $box-shadow;
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: $font-size-h2;
+    color: $color-text-primary;
+  }
+
+  .transactions-container {
+    overflow-y: auto;
+    max-height: 60vh; // или другая высота
+    padding-right: 8px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid $border-color;
+
+        &:first-child {
+          width: 20%;
+        }
+
+        &:last-child {
+          text-align: right;
+        }
+      }
+
+      th {
+        background: $background-hover;
+        font-weight: 500;
+      }
+
+      .desc {
+        font-weight: bold;
+        font-size: larger;
+        color: $color-text-primary;
+      }
+
+      .details {
+        font-size: 14px;
+        color: $color-text-secondary;
+      }
+
+      .transaction-desc {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+    }
+  }
+}

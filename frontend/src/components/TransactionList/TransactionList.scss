@@ -14,33 +14,77 @@
     color: $color-text-primary;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
+  .transaction-table-wrapper {
+    max-height: none;
+    overflow-y: visible;
 
-    th,
-    td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid $border-color;
-
-      &:first-child {
-        width: 20%;
-      }
-
-      &:last-child {
-        text-align: right;
-      }
+    &.scrollable {
+      max-height: 300px;
+      overflow-y: auto;
+      padding-right: 8px;
     }
 
-    th {
-      background: $background-hover;
-      font-weight: 500;
-    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
 
-    .amount {
-      font-weight: bold;
-      text-align: right;
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid $border-color;
+
+        &:first-child {
+          width: 20%;
+        }
+
+        &:last-child {
+          text-align: right;
+        }
+      }
+
+      th {
+        background: $background-hover;
+        font-weight: 500;
+      }
+
+      .desc {
+        font-weight: bold;
+        font-size: larger;
+        color: $color-text-primary;
+      }
+
+      .details {
+        font-size: 14px;
+        color: $color-text-secondary;
+      }
+
+      .transaction-desc {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+    }
+  }
+
+  .toggle-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .toggle-button {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: $color-text-secondary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+      color: #aaa;
     }
   }
 }
