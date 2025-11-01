@@ -13,14 +13,6 @@ const TransactionList = () => {
     <div className="transaction-list">
       <h3>Список транзакций</h3>
       <table>
-        <thead>
-          <tr>
-            <th>Дата</th>
-            <th>Статус</th>
-            <th>Описание</th>
-            <th>Сумма</th>
-          </tr>
-        </thead>
         <tbody>
           {transactions.map(tx => (
             <tr key={tx.id}>
