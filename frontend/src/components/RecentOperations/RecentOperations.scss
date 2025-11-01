@@ -19,17 +19,74 @@
 
     li {
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 60px; 
       padding: 10px 0;
       border-bottom: 1px solid $border-color;
 
-      .amount {
+      .icon {
+        width: 20px;
+        height: 20px;
+        border: 2px solid $border-color;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
         font-weight: bold;
+        margin-left: 8px;
+
+        &.income {
+          background: none;
+          color: $income-color;
+        }
+
+        &.expense {
+          background: none;
+          color: $expense-color;
+        }
       }
 
-      .desc {
-        color: $color-text-secondary;
+      .amount-date {
+        display: flex;
+        flex-direction: column;
+
+        .amount {
+          font-weight: bold;
+          font-size: x-large;
+
+          &.income {
+            color: $color-text-primary;
+          }
+
+          &.expense {
+            color: $color-text-primary;
+          }
+        }
+
+        .date {
+          color: $color-text-secondary;
+          font-size: $font-size-small;
+        }
       }
+
+      
+
+      .operation-info {
+        display: flex;
+        flex-direction: column;
+
+        .desc {
+          font-weight: bold;
+          font-size: larger;
+        }
+
+        .details {
+          color: $color-text-secondary;
+          font-size: $font-size-small;
+        }
+      }
+
     }
   }
 }

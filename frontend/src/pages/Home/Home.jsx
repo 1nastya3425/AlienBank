@@ -9,18 +9,39 @@ import TransactionList from '../../components/TransactionList/TransactionList';
 import './Home.scss';
 
 
+// TODO: ПОДКЛЮЧЕНИЕ БЭКА
+// Сейчас используются MOCK-данные из src/mocks/userData.js
+// После подключения API:
+// 1. Удалить импорт MOCK_*
+// 2. Раскомментировать/заменить на useEffect с fetch('/api/dashboard')
+// 3. Удалить папку src/mocks/
+
+// Импортируем mock-данные
+import {
+  MOCK_USER,
+  MOCK_CARDS,
+  MOCK_OPERATIONS,
+  MOCK_TRANSACTIONS
+} from '../../mocks/userData';
+
 const Home = () => {
+  // Пока бэк не готов — используем моки
+  const user = MOCK_USER;
+  const cards = MOCK_CARDS;
+  const recentOperations = MOCK_OPERATIONS;
+  const transactions = MOCK_TRANSACTIONS;
+
   return (
     <div className="home-page">
       <Header />
       <main className="container">
-        <Greeting />
-        <CardsCarousel />
+        <Greeting userName={user.name} avatarUrl={user.avatarUrl} />
+        <CardsCarousel cards={cards} />
         <div className="dashboard-grid">
-          <RecentOperations />
-          <StatsOverview />
+          <RecentOperations operations={recentOperations} />
+          <StatsOverview totalBalance={user.totalBalance} />
         </div>
-        <TransactionList />
+        <TransactionList transactions={transactions} />
       </main>
     </div>
   );

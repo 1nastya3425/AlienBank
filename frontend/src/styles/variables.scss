@@ -7,7 +7,7 @@ $background-header: #1a1520;        // Фон хедера
 $background-hover: #2d2834;         // Фон при наведении
 
 // Текст
-$color-text-primary: #ffffff;       // Основной текст
+$color-text-primary: #FEFEFE;       // Основной текст
 $color-text-secondary: #9e9ea7;     // Второстепенный текст (описания, даты)
 
 // Градиенты для карт
@@ -20,6 +20,8 @@ $button-bg: #141414;
 $button-bg-hover: #443e50;
 $button-color: #ffffff;
 $button-border-color: #525252;
+$expense-color: #CC0000;
+$income-color: #08A652;
 
 // Статистика (круг)
 $stat-circle-gradient: linear-gradient(45deg, #ff9800, #ffeb3b);
