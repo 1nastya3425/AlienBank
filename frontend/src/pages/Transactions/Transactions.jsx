@@ -14,17 +14,8 @@ const Transactions = () => {
   return (
     <div className="transactions-page">
     <Header />
-      <h2>Все транзакции</h2>
       <div className="transactions-container">
         <table>
-          <thead>
-            <tr>
-              <th>Дата</th>
-              <th>Банк</th>
-              <th>Описание</th>
-              <th>Сумма</th>
-            </tr>
-          </thead>
           <tbody>
             {transactions.map(tx => (
               <tr key={tx.id}>
