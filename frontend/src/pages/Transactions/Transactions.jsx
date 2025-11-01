@@ -14,25 +14,27 @@ const Transactions = () => {
   return (
     <div className="transactions-page">
     <Header />
-      <div className="transactions-container">
-        <table>
-          <tbody>
-            {transactions.map(tx => (
-              <tr key={tx.id}>
-                <td><div className="desc">{tx.date}</div></td>
-                <td><div className="desc">{tx.status}</div></td>
-                <td>
-                  <div className="transaction-desc">
-                    <div className="desc">{tx.desc}</div>
-                    <div className="details">{tx.details}</div>
-                  </div>
-                </td>
-                <td><div className="desc">{tx.amount}</div></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <main className="container">
+        <div className='transactions-table'>
+          <table>
+            <tbody>
+              {transactions.map(tx => (
+                <tr key={tx.id}>
+                  <td><div className="desc">{tx.date}</div></td>
+                  <td><div className="desc">{tx.status}</div></td>
+                  <td>
+                    <div className="transaction-desc">
+                      <div className="desc">{tx.desc}</div>
+                      <div className="details">{tx.details}</div>
+                    </div>
+                  </td>
+                  <td><div className="desc">{tx.amount}</div></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </main>
     </div>
   );
 };

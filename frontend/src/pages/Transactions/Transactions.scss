@@ -1,16 +1,16 @@
-// src/pages/Transactions/Transactions.scss
-
 @import '../../styles/variables.scss';
 
 .transactions-page {
+  // Чтобы было визуально одинаково с Home
+  margin-top: 20px;
 
-
-
-  .transactions-container {
-  background: $background-block;
-  padding: 20px;
-  border-radius: $border-radius-default;
-  box-shadow: $box-shadow;
+  .transactions-table {
+    background: $background-block;
+    padding: 20px;
+    border-radius: $border-radius-default;
+    border: 3px solid $border-color;
+    box-shadow: $box-shadow;
+    margin-top: 20px;
 
     table {
       width: 100%;
@@ -25,7 +25,6 @@
         &:first-child {
           width: 20%;
         }
-
         &:last-child {
           text-align: right;
         }
