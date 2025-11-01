@@ -13,11 +13,29 @@
     color: $color-text-primary;
   }
 
+  .stat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Обёртка для круга и стрелок */
+  .stat-circle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 20px); // 🔹 отступы по ~20px с каждой стороны
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+
+  /* Контейнер диаграммы */
   .stat-circle-container {
     position: relative;
     width: 300px;
     height: 300px;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,29 +81,32 @@
     }
   }
 
-  .navigation-arrows {
+  /* --- Стрелки, как в оригинальном дизайне --- */
+  .arrow-button {
+    background: transparent; // без фона!
+    border: none;
+    cursor: pointer;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    padding: 0;
+    opacity: 0.5; // лёгкая прозрачность
+    transition: opacity 0.2s ease, transform 0.2s ease;
 
-    .arrow-button {
-      background: $button-bg;
-      border: none;
-      color: $button-color;
-      width: 30px;
-      height: 30px;
-      border-radius: $border-radius-button;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      transition: background 0.2s;
+    &:hover {
+      opacity: 1; // при наведении ярче
+      transform: scale(1.1); // лёгкое приближение
+    }
 
-      &:hover {
-        background: $button-bg-hover;
-      }
+    img {
+      width: 10px;
+      height: auto;
+      filter: brightness(0) invert(1) opacity(0.8); // белый с мягкой прозрачностью
+    }
+
+    .arrow-button:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
     }
   }
 

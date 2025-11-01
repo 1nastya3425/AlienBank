@@ -1,10 +1,53 @@
 // src/mocks/userData.js
 
-// MOCK-DATA — УДАЛИТЬ ПОСЛЕ ПОДКЛЮЧЕНИЯ БЭКА
-// Этот файл используется ТОЛЬКО для демо и разработки без бэка.
-// После подключения API — удалить этот файл и импорт в Home.jsx.
+// Генерация месяцев: от текущего (октябрь 2025) до 12 месяцев назад
+const generateMockMonths = () => {
+  const months = [
+    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+    'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+  ];
 
+  const now = new Date(2025, 9, 1); // Октябрь 2025 (месяцы в JS: 0 = янв, 9 = окт)
+  const mockData = [];
 
+  for (let i = 0; i < 12; i++) {
+    const date = new Date(now);
+    date.setMonth(now.getMonth() - i);
+
+    const year = date.getFullYear();
+    const monthIndex = date.getMonth();
+    const monthName = months[monthIndex];
+
+    // Генерируем разные траты для каждого месяца
+    const baseAmount = 5000 - i * 200;
+    const categories = [
+      { id: 1, name: 'Еда', amount: Math.max(1000, baseAmount * 0.4) },
+      { id: 2, name: 'Косметика', amount: Math.max(500, baseAmount * 0.25) },
+      { id: 3, name: 'Книги', amount: Math.max(300, baseAmount * 0.15) },
+      { id: 4, name: 'Транспорт', amount: Math.max(400, baseAmount * 0.2) },
+    ];
+
+    const totalSpent = categories.reduce((sum, c) => sum + c.amount, 0);
+    const balance = (50000 - totalSpent).toLocaleString('ru-RU', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    mockData.push({
+      month: `${monthName} ${year}`,
+      balance: `${balance} ₽`,
+      categories,
+    });
+  }
+
+  return mockData;
+};
+
+export const MOCK_MONTHLY_DATA = generateMockMonths(); // массив из 12 объектов
+
+// Остальной код (функция generateMockMonths) остается как есть
+
+// Экспортируем старые моки
 export const MOCK_USER = {
   name: 'Иван',
   avatarUrl: '/images/avatar-placeholder.jpg',
