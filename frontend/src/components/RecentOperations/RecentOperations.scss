@@ -88,4 +88,26 @@
 
     }
   }
+
+.operations-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .operations-button {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: $color-text-secondary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+      color: #aaa;
+    }
+  }
+
 }

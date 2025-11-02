@@ -34,7 +34,12 @@ const TransactionList = ({ transactions }) => {
         <div className="toggle-button-wrapper">
           <button
             className="toggle-button"
-            onClick={() => navigate('/transactions', { state: { transactions } })}
+            onClick={() => navigate('/transactions', {
+              state: { 
+                transactions,
+                initialView: 'all' 
+              }
+            })}
           >
             Развернуть
           </button>
