@@ -1,5 +1,6 @@
 // src/components/StatsOverview/StatsOverview.jsx
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'; // ← ДОБАВЬ ЭТУ СТРОКУ
 import './StatsOverview.scss';
 import { CATEGORY_COLORS } from '../../utils/categoryColors';
 import to_right from '/images/right.png';
@@ -7,6 +8,8 @@ import to_left from '/images/left.png';
 import { MOCK_MONTHLY_DATA } from '../../mocks/userData';
 
 const StatsOverview = () => {
+
+  const navigate = useNavigate();
   const [currentMonthIndex, setCurrentMonthIndex] = useState(0); // 0 = текущий месяц
   const [hoveredSegment, setHoveredSegment] = useState(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
@@ -129,6 +132,14 @@ const StatsOverview = () => {
             <img src={to_right} alt="Следующий месяц" />
           </button>
         </div>
+      </div>
+      <div className="stats-button-wrapper">
+        <button
+          className="stats-button"
+          onClick={() => navigate('/stats')}
+        >
+          Подробнее
+        </button>
       </div>
     </div>
   );

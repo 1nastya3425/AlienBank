@@ -1,0 +1,317 @@
+@import '../../styles/variables.scss';
+
+.stats-page {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    h2 {
+      font-size: $font-size-h2;
+      color: $color-text-primary;
+      margin-bottom: 20px;
+    }
+
+    // === Общая статистика ===
+    .stat-section {
+      margin-bottom: 40px;
+
+      .stat-block {
+        display: flex;
+        justify-content: flex-start;
+        gap: 50px;
+      }
+
+      .stat-card {
+        position: relative;
+        background: $background-block;
+        padding: 20px;
+        border-radius: $border-radius-default;
+        border: 1px solid $border-color;
+        box-shadow: $box-shadow;
+        width: 570px;
+        height: 440px;
+
+        .stat-balance {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          font-size: x-large;
+          font-weight: 600;
+          color: $color-text-primary;
+          z-index: 2;
+        }
+
+        .stat-circle-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+
+          .arrow-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            opacity: 0.5;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+
+            &:hover {
+              opacity: 1;
+              transform: scale(1.1);
+            }
+
+            img {
+              width: 10px;
+              height: auto;
+              filter: brightness(0) invert(1) opacity(0.8);
+            }
+
+            &:disabled {
+              opacity: 0.2;
+              cursor: not-allowed;
+            }
+          }
+
+          .stat-circle-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              overflow: visible;
+              z-index: 1;
+            }
+
+            .stat-circle-text {
+              position: absolute;
+              z-index: 2;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 5px;
+
+              span {
+                font-size: 24px;
+                font-weight: bold;
+                color: white;
+              }
+
+              p {
+                font-size: $font-size-small;
+                color: $color-text-secondary;
+              }
+            }
+
+            .tooltip {
+              position: absolute;
+              transform: translate(-50%, -100%);
+              color: white;
+              padding: 4px 8px;
+              border-radius: 6px;
+              font-size: 11px;
+              text-align: center;
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+              white-space: nowrap;
+              z-index: 10;
+              pointer-events: none;
+              animation: fadeIn 0.15s ease;
+            }
+          }
+
+          .hovered {
+            stroke-width: 12;
+            transition: stroke-width 0.2s ease;
+            filter: brightness(1.15);
+          }
+
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translate(-50%, -110%) scale(0.9);
+            }
+            to {
+              opacity: 1;
+              transform: translate(-50%, -100%) scale(1);
+            }
+          }
+        }
+      }
+
+      // === Легенда диаграммы ===
+      .stat-legend {
+        flex: 1;
+        height: 440px;
+        overflow-y: auto;
+        padding-right: 10px;
+        position: relative;
+        border-radius: $border-radius-default;
+
+        // плавные тени сверху и снизу при скролле
+        &.show-top-shadow::before,
+        &.show-bottom-shadow::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 40px;
+          pointer-events: none;
+          z-index: 3;
+          transition: opacity 0.3s ease;
+        }
+
+        &.show-top-shadow::before {
+          top: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.05),
+            transparent
+          );
+          opacity: 1;
+        }
+
+        &.show-bottom-shadow::after {
+          bottom: 0;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.05),
+            transparent
+          );
+          opacity: 1;
+        }
+
+        // скрываем тени если нет скролла
+        &:not(.show-top-shadow)::before,
+        &:not(.show-bottom-shadow)::after {
+          opacity: 0;
+        }
+
+        .legend-content {
+          position: relative;
+          z-index: 2;
+          padding-right: 6px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #4a4a4a;
+          border-radius: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .legend-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
+          padding: 4px 2px;
+
+          .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+          }
+
+          .legend-text {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            min-width: 0;
+
+            span:first-child {
+              font-weight: 600;
+              color: $color-text-primary;
+              font-size: 17px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            span:last-child {
+              font-size: $font-size-small;
+              color: $color-text-secondary;
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+    }
+
+    // === Доходы и расходы ===
+    .income-expense-section {
+      margin-bottom: 50px;
+
+      h2 {
+        font-size: $font-size-h2;
+        color: $color-text-primary;
+        margin-bottom: 20px;
+      }
+
+      .chart-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .chart-card {
+        position: relative;
+        flex: 1;
+        background: $background-block;
+        padding: 20px;
+        border-radius: $border-radius-default;
+        border: 1px solid $border-color;
+        box-shadow: $box-shadow;
+        height: 440px;
+
+        .chart-balance {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          font-size: x-large;
+          font-weight: 600;
+          color: $color-text-primary;
+          z-index: 2;
+        }
+
+        svg {
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+      }
+    }
+
+    // === Кнопка назад ===
+    .back-button {
+      margin-top: 30px;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      color: $color-text-secondary;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      &:hover {
+        color: #aaa;
+      }
+    }
+  }
+}

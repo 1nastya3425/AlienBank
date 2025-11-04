@@ -109,7 +109,30 @@
       opacity: 0.2;
       cursor: not-allowed;
     }
+
+
   }
+
+      .stats-button-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .stats-button {
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      color: $color-text-secondary;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      &:hover {
+        color: #aaa;
+      }
+    }
 
   .hovered {
     stroke-width: 12;

@@ -1,13 +1,32 @@
 // src/mocks/userData.js
 
-// Генерация месяцев: от текущего (октябрь 2025) до 12 месяцев назад
+
+const ALL_CATEGORIES = [
+  'Продукты',
+  'Транспорт',
+  'Жильё',
+  'Коммунальные услуги',
+  'Развлечения',
+  'Одежда и обувь',
+  'Здоровье',
+  'Образование',
+  'Кафе и рестораны',
+  'Подписки',
+  'Красота и уход',
+  'Электроника',
+  'Подарки',
+  'Путешествия',
+  'Прочее'
+];
+
 const generateMockMonths = () => {
-  const months = [
+  const monthNames = [
     'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
     'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
   ];
 
-  const now = new Date(2025, 9, 1); // Октябрь 2025 (месяцы в JS: 0 = янв, 9 = окт)
+  // Начинаем с НОЯБРЯ 2025
+  const now = new Date(2025, 10, 1); // Ноябрь 2025 (месяцы: 0 = янв, 10 = ноя)
   const mockData = [];
 
   for (let i = 0; i < 12; i++) {
@@ -16,38 +35,84 @@ const generateMockMonths = () => {
 
     const year = date.getFullYear();
     const monthIndex = date.getMonth();
-    const monthName = months[monthIndex];
+    const monthName = monthNames[monthIndex];
+    const monthShort = monthNames[monthIndex].substring(0, 3);
 
-    // Генерируем разные траты для каждого месяца
-    const baseAmount = 5000 - i * 200;
-    const categories = [
-      { id: 1, name: 'Еда', amount: Math.max(1000, baseAmount * 0.4) },
-      { id: 2, name: 'Косметика', amount: Math.max(500, baseAmount * 0.25) },
-      { id: 3, name: 'Книги', amount: Math.max(300, baseAmount * 0.15) },
-      { id: 4, name: 'Транспорт', amount: Math.max(400, baseAmount * 0.2) },
-    ];
+    let categories;
 
-    const totalSpent = categories.reduce((sum, c) => sum + c.amount, 0);
-    const balance = (50000 - totalSpent).toLocaleString('ru-RU', {
+    // В НОЯБРЕ 2025 — все 15 категорий
+    if (year === 2025 && monthIndex === 10) { // ноябрь = 10
+      categories = ALL_CATEGORIES.map((name, idx) => {
+        let baseAmount;
+        if (['Продукты', 'Жильё', 'Транспорт'].includes(name)) {
+          baseAmount = 3000 + Math.random() * 12000;
+        } else if (['Коммунальные услуги', 'Здоровье', 'Образование'].includes(name)) {
+          baseAmount = 1000 + Math.random() * 5000;
+        } else {
+          baseAmount = 200 + Math.random() * 3000;
+        }
+        return {
+          id: idx + 1,
+          name,
+          amount: Math.round(baseAmount)
+        };
+      });
+    } else {
+      // В остальных — случайный набор
+      const numCategories = 3 + Math.floor(Math.random() * 8);
+      const shuffled = [...ALL_CATEGORIES].sort(() => 0.5 - Math.random());
+      const selectedNames = shuffled.slice(0, numCategories);
+
+      categories = selectedNames.map((name, idx) => {
+        let baseAmount;
+        if (['Продукты', 'Жильё', 'Транспорт'].includes(name)) {
+          baseAmount = 3000 + Math.random() * 12000;
+        } else if (['Коммунальные услуги', 'Здоровье', 'Образование'].includes(name)) {
+          baseAmount = 1000 + Math.random() * 5000;
+        } else {
+          baseAmount = 200 + Math.random() * 3000;
+        }
+        return {
+          id: idx + 1,
+          name,
+          amount: Math.round(baseAmount)
+        };
+      });
+    }
+
+    const totalExpense = categories.reduce((sum, c) => sum + c.amount, 0);
+    const income = totalExpense + 25000 + Math.random() * 25000;
+
+    const balance = (income - totalExpense).toLocaleString('ru-RU', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     });
 
     mockData.push({
       month: `${monthName} ${year}`,
+      monthShort,
+      year,
+      income: Math.round(income),
+      expense: Math.round(totalExpense),
       balance: `${balance} ₽`,
       categories,
     });
   }
 
+  // Порядок: [Ноябрь 2025, Октябрь 2025, ..., Декабрь 2024]
   return mockData;
 };
 
-export const MOCK_MONTHLY_DATA = generateMockMonths(); // массив из 12 объектов
+export const MOCK_MONTHLY_DATA = generateMockMonths();
 
-// Остальной код (функция generateMockMonths) остается как есть
+// Цвета для диаграмм (15 шт)
+export const CATEGORY_COLORS = [
+  '#4caf50', '#f44336', '#2196f3', '#ffeb3b', '#9c27b0',
+  '#ff9800', '#009688', '#e91e63', '#607d8b', '#795548',
+  '#8bc34a', '#03a9f4', '#ffc107', '#673ab7', '#ff5722'
+];
 
-// Экспортируем старые моки
+
 export const MOCK_USER = {
   name: 'Иван',
   avatarUrl: '/images/avatar-placeholder.jpg',
@@ -60,7 +125,6 @@ export const MOCK_CARDS = [
   { id: 3, balance: '19 106,07 ₽', type: 'Накопительный', number: '**** 3815', icon: '' },
 ];
 
-// src/mocks/userData.js
 
 export const MOCK_OPERATIONS = [
   { 
@@ -145,7 +209,6 @@ export const MOCK_OPERATIONS = [
   }
 ];
 
-// src/mocks/userData.js
 
 export const MOCK_TRANSACTIONS = [
   // Ноябрь 2025
