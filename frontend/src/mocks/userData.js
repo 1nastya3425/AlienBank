@@ -115,6 +115,11 @@ export const CATEGORY_COLORS = [
 
 export const MOCK_USER = {
   name: 'Иван',
+  surname: 'Иванов',
+  patronymic: 'Иванович',
+  birthDate: '18.12.2001',
+  email: 'yupi@gmail.com',  
+  password: '04122006',          
   avatarUrl: '/images/avatar-placeholder.jpg',
   totalBalance: '45 905 ₽',
 };
